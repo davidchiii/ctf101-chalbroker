@@ -2,5 +2,6 @@
     "name": "dsa-good-luck-k",
     "flag": "csawCTF{NowyourereadytocrackthePS3YeahSonydidthiswithECDSA}",
     "category": "crypto",
-    "points": "500"
+    "points": "500",
+    "internal_port": "5000"
 }

@@ -1,7 +1,7 @@
 import os, subprocess
 
 def find_dockerfiles() -> dict:
-    """Returns a dict{} of all Dockerfiles in the /challenges directory. Run once so I can store in memory."""
+    """Returns a dict{} of all Dockerfiles in the /challenges directory. Run once so I can store in memory"""
     res = {}
     for path, dirs, files in os.walk("challenges"):
         for file in files:
@@ -13,13 +13,13 @@ def find_dockerfiles() -> dict:
     return res
 
 def check_system() -> bool:
-    """This function checks the local system to see if the required tools are installed."""
+    """This function checks the local system to see if the required tools are installed"""
     req = ["docker", "curl"]
 
     def is_tool(name):
         from shutil import which
         return which(name) is not None
-    print("🔎 Checking for required system utils....")
+    print("Checking for required system utils....")
     try:
         for i in req:
             print(f"Checking {i}")
@@ -28,14 +28,12 @@ def check_system() -> bool:
     except Exception as e:
         print(f"Error: {e}")
     else:
-        print("✅ No missing system utils.")
+        print("No missing system utils.")
     print("\n")
 
 
-# @param name
-# @param path
 def run_build(name, path):
-    """Attempts to build {path}, tagging the image as {name}."""
+    """Attempts to build {path}, tagging the image as {name}"""
     try:
         res = subprocess.run(
             ["docker", "build", "-t", name, path],
@@ -43,7 +41,7 @@ def run_build(name, path):
             capture_output=True,
             text=True
         )
-        print(f"✅ Build succeeded for {name}")
+        print(f"Build succeeded for {name}")
     except subprocess.CalledProcessError as e:
         print(f"Build failed for {name}")
         print(e.stderr or e.stdout)
